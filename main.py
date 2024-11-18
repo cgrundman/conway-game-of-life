@@ -26,7 +26,14 @@ class CellStateCheck():
 
         # Extract neighborhood value
         self.neighborhood_sum = sum(self.neighborhood)
-
+        # Test live cell state
+        if self.cell == 1:
+            # Die if not enough neighbors
+            if self.neighborhood_sum < 2:
+                self.new_cell = 0
+            else:
+                self.new_cell = 1
+        
         return None
     
     def whole_community(self):
@@ -40,6 +47,9 @@ class CellStateCheck():
     
     def neighborhood_value(self):
         return self.neighborhood_sum
+    
+    def new_cell_state(self):
+        return self.new_cell
 
 
 if __name__ == "__main__":
