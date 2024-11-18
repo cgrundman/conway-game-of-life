@@ -1,4 +1,4 @@
-from main import CellStateCheck
+from cell_state import CellStateCheck
 
 def test_community_exists():
     community = CellStateCheck([[0, 0, 0],[0, 0, 0],[0, 0, 0]])
