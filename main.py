@@ -17,13 +17,14 @@ class CellStateCheck():
 
         # Extract Neighborhood
         self.neighborhood = []
-        for idx_x, row in enumerate(self.community):
-            for idx_y, col in enumerate(row):
-                if idx_x == 1 and idx_y == 1:
+        for row in range(len(self.community)):
+            for col in range(len(self.community[row])):
+                if row == 1 and col == 1:
                     pass
                 else:
-                    self.neighborhood.append(row[col])
+                    self.neighborhood.append(self.community[row][col])
 
+        # Extract neighborhood value
         self.neighborhood_sum = sum(self.neighborhood)
 
         return None
@@ -43,3 +44,6 @@ class CellStateCheck():
 
 if __name__ == "__main__":
     print("Groovy")
+
+    community = [[1, 0, 0],[1, 0, 0],[0, 0, 0]]
+    print(CellStateCheck(community).neighborhood_value())
