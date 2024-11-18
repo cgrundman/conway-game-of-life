@@ -14,13 +14,32 @@ class CellStateCheck():
 
         # Extract Cell
         self.cell = self.community[1][1]
+
+        # Extract Neighborhood
+        self.neighborhood = []
+        for idx_x, row in enumerate(self.community):
+            for idx_y, col in enumerate(row):
+                if idx_x == 1 and idx_y == 1:
+                    pass
+                else:
+                    self.neighborhood.append(row[col])
+
+        self.neighborhood_sum = sum(self.neighborhood)
+
         return None
     
     def whole_community(self):
         return self.community
     
     def cell_only(self):
-        return self.cell        return self.cell
+        return self.cell
     
     def neighborhood_only(self):
         return self.neighborhood
+    
+    def neighborhood_value(self):
+        return self.neighborhood_sum
+
+
+if __name__ == "__main__":
+    print("Groovy")
