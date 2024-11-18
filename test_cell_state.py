@@ -9,6 +9,10 @@
 
 from main import CellStateCheck
 
+def test_community_exists():
+    community = CellStateCheck([[0, 0, 0],[0, 0, 0],[0, 0, 0]])
+    assert community.whole_community()
+
 def test_cell_exists():
-    cell = CellStateCheck([[0, 0, 0],[0, 0, 0],[0, 0, 0]])
-    assert cell.whole_community()
+    community = CellStateCheck([[0, 0, 0],[0, 0, 0],[0, 0, 0]])
+    assert community.cell_only() == community.whole_community()[1][1]

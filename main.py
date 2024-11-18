@@ -11,7 +11,11 @@
 class CellStateCheck():
     def __init__(self, community):
         self.community = community
+        self.cell = self.community[1][1]
         return None
     
     def whole_community(self):
         return self.community
+    
+    def cell_only(self):
+        return self.cell
