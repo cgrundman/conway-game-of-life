@@ -31,6 +31,9 @@ class CellStateCheck():
             # Die if not enough neighbors
             if self.neighborhood_sum < 2:
                 self.new_cell = 0
+            # Die if too many neighbors
+            elif self.neighborhood_sum > 3:
+                self.new_cell = 0
             else:
                 self.new_cell = 1
         
