@@ -27,3 +27,8 @@ def test_overpopulation():
     test_community = [[1, 1, 1],[0, 1, 0],[0, 1, 0]]
     community = CellStateCheck(test_community)
     assert community.new_cell_state() == 0
+
+def test_survival():
+    test_community = [[1, 1, 1],[0, 1, 0],[0, 0, 0]]
+    community = CellStateCheck(test_community)
+    assert community.new_cell_state() == 1
