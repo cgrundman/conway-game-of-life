@@ -11,6 +11,8 @@
 class CellStateCheck():
     def __init__(self, community):
         self.community = community
+
+        # Extract Cell
         self.cell = self.community[1][1]
         return None
     
@@ -18,4 +20,7 @@ class CellStateCheck():
         return self.community
     
     def cell_only(self):
-        return self.cell
+        return self.cell        return self.cell
+    
+    def neighborhood_only(self):
+        return self.neighborhood

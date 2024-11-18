@@ -16,3 +16,7 @@ def test_community_exists():
 def test_cell_exists():
     community = CellStateCheck([[0, 0, 0],[0, 0, 0],[0, 0, 0]])
     assert community.cell_only() == community.whole_community()[1][1]
+
+def test_neighborhood_exists():
+    community = CellStateCheck([[0, 0, 0],[0, 0, 0],[0, 0, 0]])
+    assert len(community.neighborhood_only()) == 8
