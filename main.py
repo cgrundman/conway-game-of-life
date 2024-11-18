@@ -27,15 +27,18 @@ class CellStateCheck():
         # Extract neighborhood value
         self.neighborhood_sum = sum(self.neighborhood)
         # Test live cell state
-        if self.cell == 1:
-            # Die if not enough neighbors
-            if self.neighborhood_sum < 2:
-                self.new_cell = 0
-            # Die if too many neighbors
-            elif self.neighborhood_sum > 3:
-                self.new_cell = 0
-            else:
-                self.new_cell = 1
+        # Die if not enough neighbors
+        if self.cell == 1 and self.neighborhood_sum < 2:
+            self.new_cell = 0
+        # Die if too many neighbors
+        elif self.cell == 1 and self.neighborhood_sum > 3:
+            self.new_cell = 0
+        # Birth if 3 neighbors
+        elif self.cell == 0 and self.neighborhood_sum == 3:
+            self.new_cell = 1
+        # Retain cell state
+        else:
+            self.new_cell = self.cell
         
         return None
     
