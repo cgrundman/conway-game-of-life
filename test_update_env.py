@@ -15,3 +15,9 @@ def test_padding():
     test_env_padded = [[0, 0, 0, 0],[0, 1, 2, 0],[0, 3, 4, 0],[0, 5, 6, 0],[0, 0, 0, 0]]
     env_padded = UpdateEnv(test_env).env_w_padding()
     assert env_padded == test_env_padded
+
+def test_neighborhood_extraction():
+    test_env = [[1, 2],[3, 4],[5, 6]]
+    test_neighborhood = [[0, 0, 0],[0, 1, 2],[0, 3, 4]]
+    neighborhood = UpdateEnv(test_env).extract_neighborhood()
+    assert test_neighborhood == neighborhood
