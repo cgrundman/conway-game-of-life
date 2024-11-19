@@ -34,3 +34,10 @@ class UpdateEnv():
             for idx_n in range(len(row)):
                 self.neighborhood[idx_m][idx_n] = self.environment_padded[loc[0] + idx_m - 1][loc[1] + idx_n -1]
         return self.neighborhood
+    
+    def env_iteration(self):
+        iteration_list = []
+        for row_idx in range(len(self.environment_padded)-2):
+            for col_idx in range(len(self.environment_padded[row_idx])-2):
+                iteration_list.append(self.environment_padded[row_idx + 1][col_idx + 1])
+        return iteration_list

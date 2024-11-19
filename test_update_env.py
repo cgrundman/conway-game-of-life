@@ -21,3 +21,9 @@ def test_neighborhood_extraction():
     test_neighborhood = [[0, 0, 0],[0, 1, 2],[0, 3, 4]]
     neighborhood = UpdateEnv(test_env).extract_neighborhood()
     assert test_neighborhood == neighborhood
+
+def test_iteration():
+    test_env = [[1, 2],[3, 4],[5, 6]]
+    iteration_order = [1, 2, 3, 4, 5, 6]
+    iteration_list = UpdateEnv(test_env).env_iteration()
+    assert iteration_list == iteration_order
