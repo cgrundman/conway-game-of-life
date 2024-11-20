@@ -13,7 +13,7 @@ class CellStateCheck():
         self.community = community
 
         # Extract Cell
-        self.cell = self.community[1][1]
+        cell = self.cell_only()
 
         # Extract Neighborhood
         self.neighborhood = []
@@ -28,17 +28,17 @@ class CellStateCheck():
         self.neighborhood_sum = sum(self.neighborhood)
         # Test live cell state
         # Die if not enough neighbors
-        if self.cell == 1 and self.neighborhood_sum < 2:
+        if cell == 1 and self.neighborhood_sum < 2:
             self.new_cell = 0
         # Die if too many neighbors
-        elif self.cell == 1 and self.neighborhood_sum > 3:
+        elif cell == 1 and self.neighborhood_sum > 3:
             self.new_cell = 0
         # Birth if 3 neighbors
-        elif self.cell == 0 and self.neighborhood_sum == 3:
+        elif cell == 0 and self.neighborhood_sum == 3:
             self.new_cell = 1
         # Retain cell state
         else:
-            self.new_cell = self.cell
+            self.new_cell = cell
         
         return None
     
@@ -46,6 +46,7 @@ class CellStateCheck():
         return self.community
     
     def cell_only(self):
+        self.cell = self.community[1][1]
         return self.cell
     
     def neighborhood_only(self):
