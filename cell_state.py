@@ -13,26 +13,13 @@ class CellStateCheck():
         self.community = community
 
         # Extract Cell
-        cell = self.cell_only()
-
-        # Extract Neighborhood
-        neighborhood = self.neighborhood_only()
+        self.cell_only()
 
         # Extract neighborhood value
-        self.neighborhood_sum = sum(neighborhood)
-        # Test live cell state
-        # Die if not enough neighbors
-        if cell == 1 and self.neighborhood_sum < 2:
-            self.new_cell = 0
-        # Die if too many neighbors
-        elif cell == 1 and self.neighborhood_sum > 3:
-            self.new_cell = 0
-        # Birth if 3 neighbors
-        elif cell == 0 and self.neighborhood_sum == 3:
-            self.new_cell = 1
-        # Retain cell state
-        else:
-            self.new_cell = cell
+        self.neighborhood_value()
+
+        # Return new cell state
+        self.new_cell_state()
         
         return None
     
@@ -54,14 +41,30 @@ class CellStateCheck():
         return self.neighborhood
     
     def neighborhood_value(self):
+        # Extract Neighborhood
+        neighborhood = self.neighborhood_only()
+        self.neighborhood_sum = sum(neighborhood)
         return self.neighborhood_sum
     
     def new_cell_state(self):
+        # Test live cell state
+        # Die if not enough neighbors
+        if self.cell == 1 and self.neighborhood_sum < 2:
+            self.new_cell = 0
+        # Die if too many neighbors
+        elif self.cell == 1 and self.neighborhood_sum > 3:
+            self.new_cell = 0
+        # Birth if 3 neighbors
+        elif self.cell == 0 and self.neighborhood_sum == 3:
+            self.new_cell = 1
+        # Retain cell state
+        else:
+            self.new_cell = self.cell
         return self.new_cell
 
 
 if __name__ == "__main__":
-    print("Groovy")
-
     community = [[1, 0, 0],[1, 0, 0],[0, 0, 0]]
-    print(CellStateCheck(community).neighborhood_value())
+    print(f"Cell state: {CellStateCheck(community).cell_only()}")
+    print(f"Neighborhood value: {CellStateCheck(community).neighborhood_value()}")
+    print(f"New cell state: {CellStateCheck(community).new_cell_state()}")
