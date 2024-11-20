@@ -11,15 +11,10 @@ class UpdateEnv():
         print(len(self.new_environment[0]))
 
         # Extract size of the environment
-        self.m, self.n = len(self.environment), len(self.environment[0])
+        self.env_size()
 
         # Pad the Environment
-        self.environment_padded = env
-        for idx, row in enumerate(self.environment_padded): # reduce by removing enumerate
-            self.environment_padded[idx].insert(0, 0)
-            self.environment_padded[idx].append(0)
-        self.environment_padded.insert(0, [0] * (self.n + 2))
-        self.environment_padded.append([0] * (self.n + 2))
+        self.env_w_padding()
 
         # Create neighborhood
         self.neighborhood = [[0, 0, 0],[0, 0, 0],[0, 0, 0]]
@@ -27,11 +22,17 @@ class UpdateEnv():
         for row_idx in range(len(self.environment_padded)-2):
             for col_idx in range(len(self.environment_padded[row_idx])-2):
                 # Set current neighborhood values
-                for i in range(len(self.neighborhood)):
-                    self.neighborhood[i] = self.environment_padded[row_idx+i:2]
-                # print(self.environment_padded[row_idx + 1][col_idx + 1]) # important information
+                for n_x in range(len(self.neighborhood)):
+                    for n_y in range(len(self.neighborhood[n_x])):
+                        self.neighborhood[n_x][n_y] = self.environment_padded[row_idx+n_x][col_idx+n_y]
                 # Find new value of environment
-                self.new_environment[row_idx + 1][col_idx + 1] = CellStateCheck(self.neighborhood).new_cell_state()
+                print("Environment_pad:")
+                for row in  self.environment_padded:
+                    print(row)
+                print(f"Current cell: {self.environment_padded[row_idx+1][col_idx+1]}")
+                print(f"Neighborhood: {self.neighborhood}")
+                # new_cell_state = CellStateCheck(self.neighborhood).new_cell_state()
+                self.new_environment[row_idx][col_idx] = CellStateCheck(self.neighborhood).new_cell_state()
                 # print(f"Neighborhood: {self.neighborhood}")
 
 
@@ -47,9 +48,16 @@ class UpdateEnv():
         return self.environment
 
     def env_size(self):
-        return len(self.environment), len(self.environment[0])
+        self.m, self.n = len(self.environment), len(self.environment[0])
+        return self.m, self.n
     
     def env_w_padding(self):
+        self.environment_padded = self.environment
+        for idx, row in enumerate(self.environment_padded): # reduce by removing enumerate
+            self.environment_padded[idx].insert(0, 0)
+            self.environment_padded[idx].append(0)
+        self.environment_padded.insert(0, [0] * (self.n + 2))
+        self.environment_padded.append([0] * (self.n + 2))
         return self.environment_padded
     
     def extract_neighborhood(self):
