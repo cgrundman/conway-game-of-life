@@ -27,3 +27,9 @@ def test_iteration():
     iteration_order = [1, 2, 3, 4, 5, 6]
     iteration_list = UpdateEnv(test_env).env_iteration()
     assert iteration_list == iteration_order
+
+def test_implementation_1x1():
+    test_env = [[1]]
+    updated_env = UpdateEnv(test_env).update_env()
+    # assert updated_env == [[0]]
+    pass
