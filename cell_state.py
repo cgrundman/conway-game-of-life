@@ -16,16 +16,10 @@ class CellStateCheck():
         cell = self.cell_only()
 
         # Extract Neighborhood
-        self.neighborhood = []
-        for row in range(len(self.community)):
-            for col in range(len(self.community[row])):
-                if row == 1 and col == 1:
-                    pass
-                else:
-                    self.neighborhood.append(self.community[row][col])
+        neighborhood = self.neighborhood_only()
 
         # Extract neighborhood value
-        self.neighborhood_sum = sum(self.neighborhood)
+        self.neighborhood_sum = sum(neighborhood)
         # Test live cell state
         # Die if not enough neighbors
         if cell == 1 and self.neighborhood_sum < 2:
@@ -50,6 +44,13 @@ class CellStateCheck():
         return self.cell
     
     def neighborhood_only(self):
+        self.neighborhood = []
+        for row in range(len(self.community)):
+            for col in range(len(self.community[row])):
+                if row == 1 and col == 1:
+                    pass
+                else:
+                    self.neighborhood.append(self.community[row][col])
         return self.neighborhood
     
     def neighborhood_value(self):
