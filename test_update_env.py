@@ -38,5 +38,4 @@ def test_env_iteration():
 def test_update_env_1x1():
     test_env = [[1]]
     updated_env = UpdateEnv(test_env).update_env()
-    # assert updated_env == [[0]]
-    pass
+    assert updated_env == [[0]]
