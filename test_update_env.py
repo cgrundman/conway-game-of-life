@@ -39,3 +39,8 @@ def test_update_env_1x1():
     test_env = [[1]]
     updated_env = UpdateEnv(test_env).update_env()
     assert updated_env == [[0]]
+
+def test_update_env_2x3():
+    test_env = [[1, 1],[1, 0],[1, 0]]
+    updated_env = UpdateEnv(test_env)
+    assert updated_env.update_env() == [[1, 1],[1, 0],[0, 0]]

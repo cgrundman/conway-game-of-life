@@ -18,20 +18,21 @@ class UpdateEnv():
         self.environment_padded = list(padded)
 
         # Create new environment variable
-        self.new_environment = [[0] * self.n] * self.m
+        self.new_environment = []
 
         # Set blank neighborhood
         self.neighborhood = [[0, 0, 0],[0, 0, 0],[0, 0, 0]]
         # Iterate through padded environment
         for row_idx in range(len(self.environment_padded)-2):
+            self.new_environment_row = []
             for col_idx in range(len(self.environment_padded[row_idx])-2):
                 # Set current neighborhood values
                 for n_x in range(len(self.neighborhood)):
                     for n_y in range(len(self.neighborhood[n_x])):
                         self.neighborhood[n_x][n_y] = self.environment_padded[row_idx+n_x][col_idx+n_y]
-                new_cell_state = CellStateCheck(self.neighborhood).new_cell_state()
-                print(f"New cell state: {new_cell_state}")
-                print(f"New Environment: {self.new_environment}")
+                self.new_cell_state = CellStateCheck(self.neighborhood).new_cell_state()
+                self.new_environment_row.append(self.new_cell_state)
+            self.new_environment.append(self.new_environment_row)
 
         return None
     
