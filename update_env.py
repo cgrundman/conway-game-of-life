@@ -6,7 +6,7 @@ class UpdateEnv():
         self.environment = list(env)
 
         # Extract size of the environment
-        self.env_size()
+        self.calc_env_size()
 
         # Create Padded Environment
         padded = list(env)
@@ -36,25 +36,25 @@ class UpdateEnv():
 
         return None
     
-    def current_env(self):
+    def return_current_env(self):
         return self.environment
 
-    def env_size(self):
+    def calc_env_size(self):
         self.m, self.n = len(self.environment), len(self.environment[0])
         return self.m, self.n
     
-    def env_w_padding(self):
+    def pad_environment(self):
         return self.environment_padded
     
     def extract_neighborhood(self):
         return self.neighborhood
     
-    def env_iteration(self):
+    def iterate_through_environment(self):
         iteration_list = []
         for row_idx in range(len(self.environment_padded)-2):
             for col_idx in range(len(self.environment_padded[row_idx])-2):
                 iteration_list.append(self.environment_padded[row_idx + 1][col_idx + 1])
         return iteration_list
     
-    def update_env(self):
+    def update_environment(self):
         return self.new_environment
