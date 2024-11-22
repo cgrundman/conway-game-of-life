@@ -9,6 +9,31 @@
 # 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 from update_env import UpdateEnv
+import time
 
 if __name__ == "__main__":
+    
+    print(chr(27) + "[2J")
+    environment = [[1, 1, 0, 0, 0, 0, 0, 1, 1],
+                   [1, 0, 0, 0, 0, 0, 0, 0, 1],
+                   [0, 0, 0, 1, 0, 1, 0, 0, 0],
+                   [0, 0, 1, 1, 0, 1, 1, 0, 0],
+                   [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                   [0, 0, 1, 1, 0, 1, 1, 0, 0],
+                   [0, 0, 0, 1, 0, 1, 0, 0, 0],
+                   [1, 0, 0, 0, 0, 0, 0, 0, 1],
+                   [1, 1, 0, 0, 0, 0, 0, 1, 1],]
+    
+    for row in environment:
+        print(row)
+
+    for i in range(50):
+        time.sleep(0.5)
+        print(chr(27) + "[2J")
+
+        environment = UpdateEnv(environment).update_environment()
+
+        for row in environment:
+            print(row)
+
     pass
