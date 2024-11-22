@@ -1,4 +1,4 @@
-from main import UpdateEnv
+from update_env import UpdateEnv
 
 def test_current_env():
     test_env = [[1, 1],[1, 1]]
