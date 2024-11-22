@@ -30,7 +30,7 @@ class UpdateEnv():
                 for n_x in range(len(self.neighborhood)):
                     for n_y in range(len(self.neighborhood[n_x])):
                         self.neighborhood[n_x][n_y] = self.environment_padded[row_idx+n_x][col_idx+n_y]
-                self.new_cell_state = CellStateCheck(self.neighborhood).new_cell_state()
+                self.new_cell_state = CellStateCheck(self.neighborhood).return_new_cell_state()
                 self.new_environment_row.append(self.new_cell_state)
             self.new_environment.append(self.new_environment_row)
 
